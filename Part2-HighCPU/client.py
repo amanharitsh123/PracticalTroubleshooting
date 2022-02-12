@@ -6,7 +6,8 @@ UPLOAD_DIR = '/home/tshoot/upload/image.jpg'
 @click.command()
 @click.option('--uploadimage', is_flag=True, help="upload image to the sever")
 @click.option('--uploadencode', is_flag=True, help="upload image to server for encoding")
-def client(uploadimage, uploadencode):
+@click.option('--chaos', is_flag=True, help="Troublemaker endpoint ;)")
+def client(uploadimage, uploadencode, chaos):
     code = None
     while True:
         start = time.time()
@@ -27,6 +28,10 @@ def client(uploadimage, uploadencode):
             del res # Deleting fetched image to avoid memory leak
             print("Fetched the image from server after encoding")
             files['file'].close()
+        
+        if chaos:
+            url = "http://localhost:5000/chaos"
+            requests.get(url)
         
         print(f"StatusCode: {code} Latency: {time.time() - start} seconds")
         #print(res.content)

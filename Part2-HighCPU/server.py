@@ -47,7 +47,12 @@ def upload_and_encode():
     os.remove(os.path.join(UPLOAD_DIR, "test.jpg"))
     return "Encoding Done"
 
-
+@app.route('/chaos', methods=['GET'])
+def chaos():
+    sum_numbers = 0
+    for i in range(10**10):
+        sum_numbers += i
+    return "done"
 
 app.run()
 

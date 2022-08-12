@@ -7,3 +7,8 @@ def hello():
     return "Hey from the server."
 
 app.run(port=9000)
+
+'''
+aryanharitsh@production-new:~$ sudo iptables -A INPUT -p tcp --destination-port 9000 -j DROP
+aryanharitsh@production-new:~$ sudo iptables -F
+'''
